@@ -1,3 +1,5 @@
+from flask import render_template
+
 from . import app
 from .models import ListaMovimientos
 
@@ -5,9 +7,9 @@ from .models import ListaMovimientos
 
 @app.route('/')
 def home():
-    lista_movimientos = ListaMovimientos()
-    lista_movimientos.leer_archivo()
-    return str(lista_movimientos)
+    movimientos = ListaMovimientos()
+    movimientos.leer_archivo()
+    return render_template("inicio.html", movs=movimientos.lista_movimientos)
 
 
 @app.route('/purchase')
