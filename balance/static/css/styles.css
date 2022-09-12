@@ -1,6 +1,10 @@
+body {
+    background-color: #f6efe5;
+}
+
 header {
-    background-color: #265ab1;
-    color:white;
+    background-color: #47b896;
+    color: #090808;
     height: 75px;
     font-size: xx-large;
     line-height: 75px;
@@ -8,9 +12,36 @@ header {
 }
 
 nav {
-    background-color: #d41919;
-    color: white;
+    background-color: #FFC7C7;
+    color: #090808;
     height: 40px;
     line-height: 40px;
     padding-left: 25px;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+table.paper {
+    width: 100%;
+}
+
+.titulo-tabla {
+    border-bottom: #47b896 1px solid;
+    text-align: left;
+}
+
+.numero {
+    text-align: right;
+}
+
+.pie-de-pagina {
+    margin-top: 40px;
+    padding: 20px;
+    border-top: solid 1px #47b896;
+    color: black;
+
 }
