@@ -1,10 +1,16 @@
 header {
-    background-color: #367bf0;
+    background-color: #265ab1;
     color:white;
-    height: 50px;
-    font-size: large;
-    line-height: 50px;
-    padding-left: 25px;
-    
+    height: 75px;
+    font-size: xx-large;
+    line-height: 75px;
+    padding-left: 35px;
+}
 
+nav {
+    background-color: #d41919;
+    color: white;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
 }
