@@ -27,9 +27,16 @@
         <th class=" titulo-tabla">Tipo</th>
         <th class=" titulo-tabla numero">Cantidad</th>
       </tr>
-      {% for mov in movs %}
+      {% if movs %}
+        {% for mov in movs %}
         <tr>
-          <td>{{ mov.fecha }}</td>
+          <td>
+            {% if mov.fecha %}
+              {{ mov.fecha }}
+              {% else %}
+              ---
+            {% endif %}
+          </td>
           <td>{{ mov.hora }}</td>
           <td>{{ mov.concepto }}</td>
           <td>
@@ -41,7 +48,21 @@
           </td>
           <td class="numero">{{ mov.cantidad }}</td>
         </tr>
-      {% endfor %}
+        {% if mov.errores %}
+        <tr>
+          <td colspan="5" class="error">
+            {% for error in mov.errores %}
+            {{ error }}.
+            {% endfor %}
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <tr>
+          <td colspan="5" class="lista-vacia">SIN MOVIMIENTOS</td>
+        </tr>
+      {% endif %}
     </table>
   </main>
 

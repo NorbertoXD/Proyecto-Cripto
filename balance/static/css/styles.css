@@ -38,10 +38,22 @@ table.paper {
     text-align: right;
 }
 
+table.paper .error {
+    font-size: medium;
+    padding-left: 40px;
+    color: red;
+}
+
 .pie-de-pagina {
     margin-top: 40px;
     padding: 20px;
     border-top: solid 1px #265ab1;
     color: black;
-
 }
+
+.lista-vacia {
+    text-align: center;
+    padding: 50px;
+    color: red;
+    font-size: large;
+ }

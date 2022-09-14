@@ -5,7 +5,13 @@ from . import FICHERO
 
 class Movimiento:
     def __init__(self, fecha, hora, concepto, tipo, cantidad):
-        self.fecha = fecha
+        self.errores = []
+        try:
+            self.fecha = date.fromisoformat(fecha)
+        except ValueError:
+            self.fecha = None
+            self.errores.append("El formato de la fecha no es correcta")
+
         self.hora = hora
         self.concepto = concepto
         self.tipo = tipo
