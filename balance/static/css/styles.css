@@ -25,6 +25,10 @@ main {
     padding: 0 20px;
 }
 
+nav.main_menu a {
+    color: white;
+}
+
 table.paper {
     width: 100%;
 }
