@@ -14,8 +14,8 @@ def home():
 
 @app.route('/purchase')
 def compra():
-    return "COMPRA"
+    return render_template("purchase.html")
 
 @app.route('/status')
 def estado():
-    return "ESTADO"
+    return render_template("status.html")

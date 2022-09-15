@@ -1,72 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mycripto Inicio</title>
-  <link rel="stylesheet" href="static/css/flat-remix.css">
-  <link rel="stylesheet" href="static/css/styles.css">
-</head>
+{% extends "base.html" %}
 
-<body>
-  <header>
-      MyCripto
-  </header>
-  
-  <nav>
-    Inicio / Compra / Status
-  </nav>
+{% block head_title %}
+{{ super() }}: inicio
+{% endblock %}
 
-  <main>
-    <table class="paper">
-      <tr>
-        <th class=" titulo-tabla">Fecha</th>
-        <th class=" titulo-tabla">Hora</th>
-        <th class=" titulo-tabla">Concepto</th>
-        <th class=" titulo-tabla">Tipo</th>
-        <th class=" titulo-tabla numero">Cantidad</th>
-      </tr>
-      {% if movs %}
-        {% for mov in movs %}
-        <tr>
-          <td>
-            {% if mov.fecha %}
-              {{ mov.fecha }}
-              {% else %}
-              ---
-            {% endif %}
-          </td>
-          <td>{{ mov.hora }}</td>
-          <td>{{ mov.concepto }}</td>
-          <td>
-            {% if mov.tipo == 'I' %}
-              Ingreso
-            {% else %}
-              Gasto
-            {% endif %}
-          </td>
-          <td class="numero">{{ mov.cantidad }}</td>
-        </tr>
-        {% if mov.errores %}
-        <tr>
-          <td colspan="5" class="error">
-            {% for error in mov.errores %}
-            {{ error }}.
-            {% endfor %}
-          </td>
-        </tr>
+{% block page_title %}
+  MOVIMIENTOS
+{% endblock %}
+
+{% block contenido %}
+{{ super() }}
+<table class="paper">
+  <tr>
+    <th class=" titulo-tabla">Fecha</th>
+    <th class=" titulo-tabla">Hora</th>
+    <th class=" titulo-tabla">Concepto</th>
+    <th class=" titulo-tabla">Tipo</th>
+    <th class=" titulo-tabla numero">Cantidad</th>
+  </tr>
+  {% if movs %}
+    {% for mov in movs %}
+    <tr>
+      <td>
+        {% if mov.fecha %}
+          {{ mov.fecha }}
+          {% else %}
+          ---
         {% endif %}
-        {% endfor %}
+      </td>
+      <td>{{ mov.hora }}</td>
+      <td>{{ mov.concepto }}</td>
+      <td>
+        {% if mov.tipo == 'I' %}
+          Ingreso
         {% else %}
-        <tr>
-          <td colspan="5" class="lista-vacia">SIN MOVIMIENTOS</td>
-        </tr>
-      {% endif %}
-    </table>
-  </main>
-
-  <footer class="pie-de-pagina">2022 - Todos los derechos reservados.</footer>
-</body>
-
-</html>
+          Gasto
+        {% endif %}
+      </td>
+      <td class="numero">{{ mov.cantidad }}</td>
+    </tr>
+    {% if mov.errores %}
+    <tr>
+      <td colspan="5" class="error">
+        {% for error in mov.errores %}
+        {{ error }}.
+        {% endfor %}
+      </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <tr>
+      <td colspan="5" class="lista-vacia">SIN MOVIMIENTOS</td>
+    </tr>
+  {% endif %}
+</table>
+{% endblock %}
