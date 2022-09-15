@@ -9,8 +9,18 @@
 {% endblock %}
 
 {% block contenido %}
-{{ super() }}
-<div class="panel">
-    <p>Hola, soy el formulario para comprar cripto</p>
-</div>
+{{super()}}
+
+
+<form action="/purchase" method="post">
+    <div class="campo_formulario">
+    <label for="from">From:</label>
+        <select>
+            <option>euro</option>
+            <option>bolivares</option>
+        </select>
+    </div>
+</form>
+
+
 {% endblock %}
