@@ -14,34 +14,28 @@
   <tr>
     <th class=" titulo-tabla">Fecha</th>
     <th class=" titulo-tabla">Hora</th>
-    <th class=" titulo-tabla">Concepto</th>
-    <th class=" titulo-tabla">Tipo</th>
-    <th class=" titulo-tabla numero">Cantidad</th>
+    <th class=" titulo-tabla">Moneda_from</th>
+    <th class=" titulo-tabla">Cantidad_from</th>
+    <th class=" titulo-tabla">Moneda_to</th>
+    <th class=" titulo-tabla">Cantidad_to</th>
+    <th class=" titulo-tabla numero">PU</th>
   </tr>
   {% if movs %}
     {% for mov in movs %}
     <tr>
-      <td>
-        {% if mov.fecha %}
-          {{ mov.fecha }}
-          {% else %}
-          ---
-        {% endif %}
-      </td>
-      <td>{{ mov.hora }}</td>
-      <td>{{ mov.concepto }}</td>
-      <td>
-        {% if mov.tipo == 'I' %}
-          Ingreso
-        {% else %}
-          Gasto
-        {% endif %}
-      </td>
-      <td class="numero">{{ mov.cantidad }}</td>
+      
+      <td>{{ mov.Fecha }}</td>
+      <td>{{ mov.Hora }}</td>
+      <td>{{ mov.Moneda_from }}</td>
+      <td>{{ mov.Cantidad_from }}</td>
+      <td>{{ mov.Moneda_to }}</td>
+      <td>{{ mov.Cantidad_from }}</td>
+      <td>{{ mov.PU }}</td>
+      
     </tr>
     {% if mov.errores %}
     <tr>
-      <td colspan="5" class="error">
+      <td colspan="7" class="error">
         {% for error in mov.errores %}
         {{ error }}.
         {% endfor %}
@@ -51,8 +45,19 @@
     {% endfor %}
     {% else %}
     <tr>
-      <td colspan="5" class="lista-vacia">SIN MOVIMIENTOS</td>
+      <td colspan="7" class="lista-vacia">SIN MOVIMIENTOS</td>
     </tr>
   {% endif %}
 </table>
+
+<a href="status">
+  <button class="greem-button">Estados</button>
+</a>
+
+<a href="purchase">
+  <button class="rounded-button">+</button>
+</a>
+
+
+
 {% endblock %}

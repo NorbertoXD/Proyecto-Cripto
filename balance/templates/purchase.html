@@ -13,14 +13,52 @@
 
 
 <form action="/purchase" method="post">
-    <div class="campo_formulario">
-    <label for="from">From:</label>
+    
+    <!--<div class="campo_formulario">
+        <label for="datetime-local">Fecha y hora:</label>
+        <input type="datetime-local" id="datetime-local" name="datetime-local">
+    </div>-->
+    
+    <div class="campo-formulario">
+        <label for="moneda_from">From:</label>
+        <!--<input type="text" id="from" name=""> -->
         <select>
-            <option>euro</option>
             <option>bolivares</option>
+            <option>euro</option>
+            <option>dolar</option>
         </select>
     </div>
-</form>
+
+    <div class="campo-formulario">
+        <label for="cantidad_from">Q:</label>
+        <input type="number" id="cantidad_from" name="cantidad_from">
+        <button class="green-button">calculadora</button>
+    </div>
+
+    <div class="campo-formulario">
+        <label for="moneda_to">To:</label>
+        <!--<input type="text" id="from" name=""> -->
+        <select>
+            <option>bolivares</option>
+            <option>euro</option>
+            <option>dolar</option>
+        </select>
+    </div>
+
+    <div class="campo-formulario">
+        <label for="cantidad_to">Q:</label>
+        <input type="number" id="cantidad_to" name="cantidad_to">
+    </div>
+
+    <div class="campo-formulario">
+        <label for="precio_unitario">P.U.:</label>
+        <input type="number" id="precio_unitario" name="precio_unitario">
+    </div>
+    
+    
+    <div class="acciones">
+        <button class="green-button">✔</button>
+    </div>
 
 
 {% endblock %}

@@ -1,34 +1,35 @@
+import sqlite3
 import csv
 from datetime import date, datetime
 
-from . import FICHERO
-
-class Movimiento:
-    def __init__(self, fecha, hora, concepto, tipo, cantidad):
-        self.errores = []
-        try:
-            self.fecha = date.fromisoformat(fecha)
-        except ValueError:
-            self.fecha = None
-            self.errores.append("El formato de la fecha no es correcta")
-
-        self.hora = hora
-        self.concepto = concepto
-        self.tipo = tipo
-        self.cantidad = cantidad
+from . import FICHERO 
 
 
+class DBManager:
+    def __init__(self, ruta):
+        self.ruta = ruta
 
-class ListaMovimientos:
-    def __init__(self):
+    def consultaSQL(self, consulta):
+        conexion = sqlite3.connect(self.ruta)
+        cursor = conexion.cursor()
+        cursor.execute(consulta)
         self.movimientos = []
+        nombres_columnas = []
 
-    def leer_archivo(self):
-        with open(FICHERO,"r", encoding="UTF-8") as fichero:
-            reader = csv.DictReader(fichero)
-            for linea in reader:
-                #self.lista_movimientos.append(linea)
-                mov = Movimiento(
-                    linea["fecha"], linea["hora"], linea["concepto"], 
-                    linea["tipo"], linea["cantidad"])
-                self.movimientos.append(mov)
+        for desc_columna in cursor.description:
+            nombres_columnas.append(desc_columna[0])
+
+        
+        datos = cursor.fetchall()
+        for dato in datos:
+            movimiento = {}
+            indice = 0
+            for nombre in nombres_columnas:
+                movimiento[nombre] = dato[indice]
+                indice += 1
+            self.movimientos.append(movimiento)
+
+        conexion.close()
+
+        return self.movimientos
+            

@@ -31,11 +31,15 @@ nav.main_menu a {
 
 table.paper {
     width: 100%;
+    color: black;
+    text-align: center;
+    margin: auto;
+    padding: 20px
 }
 
 .titulo-tabla {
     border-bottom: green 1px solid;
-    text-align: left;
+    text-align: center;
 }
 
 .numero {
@@ -60,4 +64,22 @@ table.paper .error {
     padding: 50px;
     color: red;
     font-size: large;
+ }
+
+.campo-formmulario-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+ }
+
+.rounded-button{
+    background-color: blue;
+    position: relative;
+    bottom: 55px; 
+    left: 700px;
+    color: white;
+ }
+
+.greem-button{
+    background-color: red;
  }
