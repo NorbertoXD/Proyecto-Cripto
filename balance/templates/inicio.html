@@ -29,13 +29,13 @@
       <td>{{ mov.Moneda_from }}</td>
       <td>{{ mov.Cantidad_from }}</td>
       <td>{{ mov.Moneda_to }}</td>
-      <td>{{ mov.Cantidad_from }}</td>
+      <td>{{ mov.Cantidad_to }}</td>
       <td>{{ mov.PU }}</td>
       
     </tr>
     {% if mov.errores %}
     <tr>
-      <td colspan="7" class="error">
+      <td colspan="4" class="error">
         {% for error in mov.errores %}
         {{ error }}.
         {% endfor %}
@@ -45,17 +45,17 @@
     {% endfor %}
     {% else %}
     <tr>
-      <td colspan="7" class="lista-vacia">SIN MOVIMIENTOS</td>
+      <td colspan="4" class="lista-vacia">SIN MOVIMIENTOS</td>
     </tr>
   {% endif %}
 </table>
 
 <a href="status">
-  <button class="greem-button">Estados</button>
+  <button class="greem-button" href="/status">Estados</button>
 </a>
 
 <a href="purchase">
-  <button class="rounded-button">+</button>
+  <button class="rounded-button" href="purchase">+</button>
 </a>
 
 

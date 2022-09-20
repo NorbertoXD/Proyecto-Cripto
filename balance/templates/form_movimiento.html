@@ -4,21 +4,33 @@
 {{ super() }}: compra
 {% endblock %}
 
-{% block page_title %}
-    COMPRA DE CRIPTOS
+{%  block page_title %}
+  COMPRA DE CRIPTOS
 {% endblock %}
 
 {% block contenido %}
-{{super()}}
+{{ super ()}}
+
+{% if errores %}
+  <div class="lista-errores">
+    <p>
+      <ion-icon name="warning-sharp" class="icono-error"></ion-icon>
+    </p>
+    <div class="mensajes-error">
+      {% for error in errores %}
+        <p>{{ error }}</p>
+      {% endfor %}
+
+      {{ form.errors }}
+    </div>
+  </div>
+{% endif %}
 
 
-<form action="/purchase" method="POST">
-    
-    <!--<div class="campo_formulario">
-        <label for="datetime-local">Fecha y hora:</label>
-        <input type="datetime-local" id="datetime-local" name="datetime-local">
-    </div>-->
-    
+<form class="paper" action="/purchase"  method="POST">
+    {{formulario.csrf_token}}    
+    {{ form.id }}
+
     <div class="campo-formulario">
         <label for="moneda_from">Moneda_from:</label>
         <input type="text" id="from" name="">
@@ -47,8 +59,9 @@
     
     
     <div class="acciones">
-        <button class="green-button">✔</button>
+      {{ form.cancelar }}
+      {{ form.guardar }}
     </div>
 
-
+  </form>
 {% endblock %}
