@@ -12,6 +12,7 @@
 {{ super ()}}
 
 {% if errores %}
+  
   <div class="lista-errores">
     <p>
       <ion-icon name="warning-sharp" class="icono-error"></ion-icon>
@@ -21,47 +22,32 @@
         <p>{{ error }}</p>
       {% endfor %}
 
-      {{ form.errors }}
     </div>
   </div>
 {% endif %}
 
 
 <form class="paper" action="/purchase"  method="POST">
-    {{formulario.csrf_token}}    
-    {{ form.id }}
+    {{formulario.csrf_token}}   
 
-    <div class="campo-formulario">
-        <label for="moneda_from">Moneda_from:</label>
-        <input type="text" id="from" name="">
-    </div>
+    {{formulario.moneda_from.label}}
+    {{formulario.moneda_from}}
+    {{formulario.moneda_to.label}}
+    {{formulario.moneda_to }}
+<br>
+    {{formulario.cantidad_from.label}}
+    {{formulario.cantidad_from}}
+    {{formulario.cantidad_to.label}}
+    {{formulario.cantidad_to}}
+    {{formulario.consultarapi}}
+    {{numero}}
+    <br>
+    <p>P.U.: {{calculo}}</p>
+   
+<br>     
+    <button type="reset" name="return" id="return"> Borrar </button>
+    {{formulario.enviar}}
 
-    <div class="campo-formulario">
-        <label for="cantidad_from">Cantidad_from:</label>
-        <input type="number" id="cantidad_from" name="cantidad_from">
-        <button class="green-button">calculadora</button>
-    </div>
-
-    <div class="campo-formulario">
-        <label for="moneda_to">Moneda_to:</label>
-        <input type="text" id="from" name="">
-    </div>
-
-    <div class="campo-formulario">
-        <label for="cantidad_to">Cantidad_to:</label>
-        <input type="number" id="cantidad_to" name="cantidad_to">
-    </div>
-
-    <div class="campo-formulario">
-        <label for="precio_unitario">P.U.:</label>
-        <input type="number" id="precio_unitario" name="precio_unitario">
-    </div>
-    
-    
-    <div class="acciones">
-      {{ form.cancelar }}
-      {{ form.guardar }}
-    </div>
 
   </form>
 {% endblock %}
